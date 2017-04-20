@@ -1,0 +1,16 @@
+*.iml
+.idea/
+.gradle
+/build
+*.aux
+*.log
+*.gz
+*.dvi
+*.bib
+*.bbl
+*.bcf
+*.blg
+*.ps
+*.swp
+*.xoj
+report/*.xml
