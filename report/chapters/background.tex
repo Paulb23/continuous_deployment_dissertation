@@ -24,4 +24,30 @@
 
 \section{Background}
 
-background.
+The following chapter will cover two sections. Firstly, looking at where the idea for continuous development came from and the how the field ended up where it is today, going over the terms used.
+
+\subsection{History of Continuous deployment}
+
+Continuous deployment is in a group of methodologies under the name of extreme programming (XP) which in turn is part of the Agile process \cite{XP}. The core principles of extreme programming is to be adaptive to change and quick feedback for everyone involved. Developers get feedback on the code, bugs and features. Clients get the features they need and Managers can make decisions about the direction of the project without bringing the whole system down. TODO:cite
+\\\\
+This movement started in March 1996 by Ken Back TODO:cite with continuous integration going further back to 1991 by Grady Booch TODO:cite. The main change between that of Booch's design and extreme programming, is that Booch placed a one integration a day limit, whereas extreme programming favours much more. TODO:cite
+\\\\
+The core idea behind Booch's idea is to avoid problems when a new release is integrated into an old system. It could achieve this goal via automated unit tests. Each test would run through a single public method and make sure that it is performing as it should. For example if a method takes two numbers and return the sum of the numbers. A unit test would test that \textit{1+1} will return \textit{2}, trying edge cases such as using letters and so on. In total there would be a group of tests for every public function. 
+\\\\
+After the developer has made a change to the code base they would run the tests if they all passed then the code was OK to be check in and used in the next release. This was enhanced with the idea of test driven development, where the test are written first then the change.
+\\\\
+This all started to kick off around 1997 with the continuous integration being place inside of the extreme programming movement.  This continued until 1999 through various books and publications by the movement, namely Kent Beck.
+\\\\
+Up to this point continuous integration just consisted of developers writing unit tests and running them locally to make sure that everything passes. When all the test pass the developer would then   checking the changes in to the version control system (VCS). Other developer then working on the same code base will be able to get the latest code and know that it works.
+\\\\
+This started to change around 2001 with the release of CruiseControl, because in the previous system what if a developer did not run the unit tests, or forgot or check in some files, so it would work fine on their local set-up but nowhere else. Therefore rather then leaving it up to the developer it could be automated. This introduced the idea of build servers. 
+\\\\
+A build server would sit there and depending on the particular set up and work-flow of the project,  would take the changes run the tests against them and then send out a report to the developer, or any who was interested. Now the if the developer forgot something it would be caught before anyone else started working on top of the changes.
+\\\\
+So far most of the work was performed by developers for developers, in order to assure that the current state of the code base was in a always working condition. This continues until 2008 when Patrick Debois and Andrew Shafer meet up and discuss bridging the gap between development, system administrators and other roles within the agile infrastructure. For example the developer environment is different to the test environment witch in turn is different to QA and production environments. 
+\\\\
+This then sparked the next stage in the movement, the creation of devops. This in turn created a whole host of new tools such as Jenkins (Hudson), Puppet and Chef just to name a few. These new tools made continuous integration easier then ever, and as they gained maturity started to see a lot of use in industry.
+\\\\
+As these tools started to gain popularity and with the internet being widespread, there was a shift to not only able to test, but as as the code is in a always working condition push out to the customers so they can always have the latest version, features and so on. This goes under the name of continuous deployment. This allows bugs to be fixed almost as quickly as they are found due to the reproduction of the customers environment back over in the developers workstation.
+\\\\
+Today, the transition over to stands Continuous Deployment is still being made, with more tools arriving. The idea of server less severs and tools such as Docker in order to increase the reproducibility of the environments faster and with better accuracy.
