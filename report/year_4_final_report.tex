@@ -34,6 +34,13 @@
 \usepackage{float}							% for floting points.
 \usepackage{chngcntr}						% for numbering scheme
 \usepackage[authoryear]{natbib}			% for refrencing.
+\usepackage{titlesec}						% for subsubsub sections
+
+\setcounter{secnumdepth}{4}					% subsubsubsections
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 \bibliographystyle{apalike}					% set refencing style
 \bibpunct{(}{)}{;}{a}{,}{,}

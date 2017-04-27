@@ -60,18 +60,21 @@ In the previous part this paper named various tools that are used in the pipelin
 
 \subsubsection{Version control systems}
 
+\paragraph{What are version control systems}
 A version control system (VCS) or version control goes under two other names, revision control and source control. A VCS has a simple premise to manage the changes performed on a document. For example every time a document is edited, the changes are stored alongside the timestamp, user and other metadata. Then if at some point down the line a user want to see who made the changes or undo the changes as it broke the system they should be able to easily. 
 \\\\
-In short it is a system to manage a documents version, over long periods of time even when the system in closed, restarted or moved. This lays the foundations for more complex operations. As the changes are stored comparisons of different versions can be made, allowing them to be merged together.
-\\\\
-If user A sees an error in a document that the owner has not fixed, they can show the changes to the owner, if the owner agrees and likes the changes they can merge them in. This applies the changes from user A into the main document. This is also known as a pull request.
+In short it is a system to manage a documents version, over long periods of time even when the system in closed, restarted or moved. This lays the foundations for more complex operations. 
+
+\paragraph{Merging and pull requests}
+As the changes are stored comparisons of different versions can be made, allowing them to be merged together. If user A sees an error in a document that the owner has not fixed, they can show the changes to the owner, if the owner agrees and likes the changes they can merge them in. This applies the changes from user A into the main document. This is also known as a pull request.
 \\\\
 If the owner makes a change to the document they do not need to send a pull request as they own the original, therefore they can merge right away. This merging is also called checking in, as the person is checking in there changes to the VCS.
 \\\\
 The VCS however, does not just record changes to just a single document but everything inside of a folder. Therefore it will track adding new files, deleting files and renaming files. Each VCS handles it slightly differently, however this is irrelevant to this paper.The folder will the in case of software development be the project root.
 \\\\
 If a VCS is tracking all files, then when checking in changes it would be a waste to do this per file, instead changes are grouped together under a commit. This commit is then checked in one go. Rather than a single file at a time, this allows relevant changes to be grouped together creating a nicer history for the project.
-\\\\
+
+\paragraph{Branching}
 VCS has one more main function to cover in respects to this paper, called branching. Similar to that in a tree VCS have a main or master branch called the trunk. A branch is similar to a workspace, and represents the changes on that workspace that got it to its current point.
 \\\\
 When branching it creates a copy of the current branch allowing it to take off in a different direction. Therefore development can go into two different directions without issues of people working on the same file. Then if needed can be merged back. This is better represented graphically as seen below in figure \ref{fig:vcs_branching}:
@@ -84,7 +87,8 @@ When branching it creates a copy of the current branch allowing it to take off i
 \end{figure}
 
 Each circle on the figure represents a commit (a group of changes). The figure also shows that branch one splits off from master, using it as its base then merged back in. While branch two uses branch one as its base, however has not yet been merged. There are different work-flows around this feature covered in more depth in section TODO:link the section.
-\\\\
+
+\paragraph{VCS Systems}
 So far the paper has gone on about a folder that exists, this folder goes under the name of a repository. The next part will look at where the repository is located, such that multiple people or a single person can work on the project taking advantage of VCS, and how they differ. There are two main way that this is achieved, both use a client sever architecture. 
 \\\\
 The first has the server contain the repository, then the developer will create a local copy of the repository according to the branch they are on. They then work on the local copy editing files, however anything else such as creating a branch, merging or checking out files is performed by the server therefore a connection is required.
@@ -104,6 +108,35 @@ There are a lot more intricate details to VCS however they will not be covered t
 
 \subsubsection{Testing}
 
+Testing tools reefers to the frameworks used to create the mentioned unit tests and other forms of tests. In line with this paper the frameworks will be based around code testing code so it can be automated, rather then that of a manual nature.
 
+\paragraph{Unit Testing}
+Unit testing is generally the first form the tests that are run on a project, as they are fast, lightweight and give good coverage of the system. If the unit tests passed then the developer should be save in knowing that the program is in a baseline state of working order. 
+\\\\
+As mentioned earlier unit tests, test all public functions to make sure that each one can handle invalid and valid input correctly. The individual tests are then packed into test suites allowing the developer to run only the tests relevant to the change. In addition to helping test organisational as there are normally as many if not more lines of code in test as the project itself.
+\\\\
+The most popular testing framework is the xUnit family, where x is the first few letters in the language of choice, for example, JUnit for Java, CUnit for C and  CPPUnit for C++. The xUnit family  are upheld as the standard for unit testing.
+\\\\
+Before going any further, a quick tangent must be made into build systems. A build system takes the project and produces the final output that can then be placed where required. The build system in a basic set-up is a script that will call commands to build the project. This may involve coping files, deleting, renaming or checking that the environment has what it needs and so on.
+\\\\
+Therefore when building the project the build system can build the test suites as well. In a full extreme programming set up these tests will be ran automatically when the project is built. However, this does not prevent the tests from being ran without re-building, built separately or ran at all. This is covered again later in the paper. TODO: Chapter location
+
+\paragraph{Integration and Acceptance tests}
+
+There are other forms of testing that can be performed on a project, such as usability, regression,  and security. However, the main focus will be on integration and acceptance testing, with the rest earning a brief mention later on. TODO: Chapter location
+\\\\
+Unit tests tests each method individually to make sure that it is performing up to scratch, however unseen side affect may occur when these parts are put together. For example, if you have a phone case, you test that it can hold an abject of a certain size, and that it does not fall out, it will not break went dropped and more. But when you place the phone inside the case its the wrong size. This is integration testing, making sure the the each part while tested individually works as a whole.
+\\\\
+These test are the next step up from unit test, as in order function they will requires to simulate some of the running functionality, whereas unit tests will avoid this at all costs. For example an integration tests may require the use of a database. Whereas a unit test may fake a database just to see if the correct command is being sent.
+\\\\ 
+Similarly to unit tests and will be theme throughout there are frameworks that are deigned to support and run integration tests, with varying levels of sophistication.
+\\\\
+Following on from integration tests there are acceptance tests. Acceptance tests are performed on a fully set up system, to decide that the system is acceptable for use by the customers. This will include making sure that the system has all of the functionality available, performance and completes each task successfully. From the users perceptive.
+\\\\
+Acceptance tests will normally be process through the user interface (UI) that a normal user would go through. For example a web application the user would use their browser. Whereas for a command line application the testing would go trough the command line.
+\\\\
+For web application there are frameworks such as selenium that allow the tests to interact through a mock browser. Others will need the have a browser on the system and available to run rather than mocking. For desktop application TestFX can be used to test JavaFX application and so on.
+\\\\
+Overall integration and acceptance tests are designed to make sure the system can be put together and when done so will work as expected. The makes sure that when the users interact with the system that it works and does not collapse because of a glaring issue such as the phone case being the wrong size.
 
 \subsubsection{Infrastructure}
