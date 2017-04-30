@@ -140,3 +140,23 @@ For web application there are frameworks such as selenium that allow the tests t
 Overall integration and acceptance tests are designed to make sure the system can be put together and when done so will work as expected. The makes sure that when the users interact with the system that it works and does not collapse because of a glaring issue such as the phone case being the wrong size.
 
 \subsubsection{Infrastructure}
+
+So far the paper has looked at the where the code and other project files are stored, some of the main type of tests that are ran on a project. However, continuous deployment aims automate everything, therefore a pipeline is needed. This is where infrastructure tools step in. They act the the conveyor belt moving the project between the steps.
+\\\\
+At the start of the pipeline and the standard are tools such as Jenkins, Teamcity and Bamboo. Each provide a system to create steps that are then ran in order. In order to start running the steps the tools will provide several triggers.
+\\\\
+Triggers come in four main types, manual which will require someone to press a button to start it. Sometimes this will require typing in arguments that are needed such as the version number. 
+\\\\
+Time based trigger, come in two forms, when a certain time is met such as 6PM, or on a recurring frequency such as every two hours.
+\\\\
+The third type ties into the version control system and can trigger on a commit or every five commits or when a commit is sent to a certain branch. 
+\\\\
+The final type is not so much a way to start the entire process but rather a way to continuous, allow the pipeline to be triggered whenever step is completed.
+\\\\
+Each step in the pipeline will often be calls to other programs and then storing the logs in a central place, keeping an eye on the entire process even across machines. The support for programs such as testing and other programming language will vary from toll  to tool. Most modern tools allow sever pipeline to be running at once, it does this in the same way that  it can track the pipeline across several machines. 
+\\\\
+Firstly, it provides a central web server install, this is often the part that the user will interact with and set up the system. This will often require the creation of user accounts and access settings.
+\\\\
+Alongside the web server they will provide agents, this name will change depending on the tool. An agent is a program that will run the steps. When installed the agent will register itself to the central server allowing it to take on jobs. This allows there to be several agents on different or the same machines so several steps can be ran at once.
+\\\\
+Some steps however may require a specific set up for example running a Linux build of the project will not work on window. Therefore the central server will factor this into job assignment to make sure that the agent can run the job successfully. This may lead to the situation where the first three steps are ran on one agent that the next three on another due to the different requirements.
