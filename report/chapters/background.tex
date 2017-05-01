@@ -142,7 +142,8 @@ Overall integration and acceptance tests are designed to make sure the system ca
 \subsubsection{Infrastructure}
 
 So far the paper has looked at the where the code and other project files are stored, some of the main type of tests that are ran on a project. However, continuous deployment aims automate everything, therefore a pipeline is needed. This is where infrastructure tools step in. They act the the conveyor belt moving the project between the steps.
-\\\\
+
+\paragraph{Automation tool}
 At the start of the pipeline and the standard are tools such as Jenkins, Teamcity and Bamboo. Each provide a system to create steps that are then ran in order. In order to start running the steps the tools will provide several triggers.
 \\\\
 Triggers come in four main types, manual which will require someone to press a button to start it. Sometimes this will require typing in arguments that are needed such as the version number. 
@@ -160,3 +161,50 @@ Firstly, it provides a central web server install, this is often the part that t
 Alongside the web server they will provide agents, this name will change depending on the tool. An agent is a program that will run the steps. When installed the agent will register itself to the central server allowing it to take on jobs. This allows there to be several agents on different or the same machines so several steps can be ran at once.
 \\\\
 Some steps however may require a specific set up for example running a Linux build of the project will not work on window. Therefore the central server will factor this into job assignment to make sure that the agent can run the job successfully. This may lead to the situation where the first three steps are ran on one agent that the next three on another due to the different requirements.
+
+\paragraph{Automated Deployment}
+
+Now that a automation tool is set-up and can be triggered, the end of the pipeline require deploying the project onto the servers. In order to successfully deploy the server in question need to be set up correctly. This will require making sure libraries and programs are installed, correct operating systems and configure files are correct. Depending on the project this may require more or less.  In addition to this the project may be located on one or twenty thousand server. Therefore it need to be able to set up all the server correctly. The server set-up as well may depend on the project version, user or location. 
+\\\\
+This is where tools such as Chef, puppet and octopus come to use. There are a lot more available but, for this next part Chef will be used as an example due to its easier to understand terminology however, they all work in the same way with different names.
+\\\\
+First of all they also run in a client server architecture where there is a central server and nodes that report to and take jobs from. As seen in the automation tools. Similarly the server has an interface that allow management of the software.
+\\\\
+Once the central server is installed and the chefs are placed on the servers that the project will be deployed to. The configuration on how to handle the software needed is set-up in "recipes". A recipe will be made for each of the programs used and needed by the project. As it is a recipe there can be variation for different versions or other reasons.
+\\\\
+Once the recipes are made, they are grouped together in a "cookbook". The start of the cookbook will list the programs that need to be installed and in what order. Following the installation will be the recipes. When a deployment is issued the correct cookbook is passed to the chef(s) who then can set up the server by running through the cookbook.
+\\\\
+This then allow the user to set-up cookbooks and recipes for each configuration needed, and with a single click can start up a new server or deploy over an old one easily.
+
+\paragraph{Deployment}
+
+In the previous section the paper went over how deployments are achieved but not what it is deploying. This has been wrapped up as software, library's or the project. This part aims to clear this up.
+\\\\
+When talking about server there are two parts, the first the hardware that the server is made out of and the part the projects uses. Generally when using a server rather than running directly on the hard via the first OS. A virtual machine (VM) is installed, with several instances. The VM is what people are normally referring to when they say server. This will be the case throughout this paper.
+\\\\
+This bring about how to deploy. As it is a VM with nothing extra, it will act like normal server and allows the users to deploy how they like, this may involve using VM snapshots, VM resetting or re-installing the software. This comes done to how the software works and the standards around that. 
+\\\\
+However, more recently other tools have come to light such as Docker. Docker replaces the VMs, and so rather than creating a new Linux or windows or other environment instead acts as anther layer of abstraction. Allowing to deploy to Docker, rather then the OS, then providing the OS has Docker installed the software should run on it without any problems. This also allows the sharing of libraries and other software. In order to understand this the image in figure \ref{fig:docker-vm} shows the difference:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45]{images/docker-vm.png}
+	\caption{Dover vs VMs from \cite{docker-vm}}
+	\label{fig:docker-vm}
+\end{figure}
+
+Not only this, but docker utilises a form of VCS, each container as they are called, is spawned from a Docker image. a Image is the final product of the project and the library that it needs. Theses images can then be placed into Dockers VCS.
+\\\\
+Then when it comes to deploy, just one image needs to be made, no matter the OS pushed into the VCS and pulled onto the servers. This not only eases deployment but also bug reproduction as the image is guaranteed to be the same no matter the machine. Allowing developers to reproduce the productions environment in a mater of minutes. 
+\\\\
+Another new technology that is emerging is server-less servers. This does not mean there are no servers, or that server are not server, servers are still used. However it switch the developer from thinking about server to tasks.
+\\\\
+Rather than building one project instead its build out of small tasks, each task is then spun up when requested then, removed when the task is complete. Meaning it only exists while the task is needed. This can be combined with Docker to spin up an image then remove it afterwards. In this way updates are pushing new images into the VCS.
+
+\subsection{Background Final words}
+
+This section has given a brief overview of where automated testing and continuous deployment has come from at where it sits at the time of writing this paper. It has gone over the various tools to a certain level, there are certainly more complex and deeper details then that cover here. However for the purposes of this paper it is not needed.
+\\\\
+The software named throughout this section are some of the most well known in the industry, but there are certainly more each bringing their own advantages and disadvantages to the table.
+\\\\
+From this point on the paper will shift over from what each part is to how it fits together is the best way possible.
