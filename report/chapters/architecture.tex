@@ -85,9 +85,38 @@ This basic pattern and flow of the pipeline does seems to be a common theme thro
 
 As seen the pipeline is generally triggered via a commit into the VCS this makes the workflow with the branch structure and VCS a central component into how the rest of the systems are put together.
 \\\\
-There are two main schools of thoughts when working with continuous deployment and VCS the first in more commonly seen in open source projects that are hosted on sites such as Github and Bitbucket, with the second when everyone has full access to the repository. 
+There are two main schools of thoughts when working with continuous deployment and VCS the first is more commonly seen in open source projects that are hosted on sites such as Github and Bitbucket, with the second when everyone has full access to the repository. 
 \\\\
-The fist uses a pull request system
+The fist uses a pull request system, all the developers or contributes to the project will submit their changes trough a pull request. When the request is made an automated system will start the process of running through the pipeline. 
+\\\\
+Here the system can automatically merge the change if it passes, however, in open source project it is more common to find the owners to perform a code review and check for harmful changes before merging the request manually. If however it is a private repository the code checked in can be automatically merged. 
+\\\\
+If the checks fail the request can remain open util an update is pushed to it where it will run the checks again. This is visualised in figure \ref{fig:osspipeline}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{images/osspipeline.png}
+	\caption{Pull request delivery pipeline by \cite{osspipeline}}
+	\label{fig:osspipeline}
+\end{figure}
+
+The only thing to note about the diagram is the manual review as mentioned, this could be automated creating the full continuous delivery pipeline rather than continuous integration.
+\\\\
+The second system is similar to the pull request however rather than preforming the change in a pull request the commit is placed inside the teams VCS workflow branch. When working in a agile and continuous delivery environment it is general accepted that there should be a master branch that is the latest version of the software. This is also the branch where all the development goes and what the customer gets.
+\\\\
+Following that system the main branch will have the pipeline attached, when a milestone is reached such as the end of a sprint in agile methodology. A new branch is created to represent the milestone at that point in time. 
+\\\\
+One reason for this workflow is it will carry well across multiple systems as TFS does not branch in the same way that GIT does. Branching in GIT is similar to changing the entire repository, for example if the current branch is master, then when changing to feature\_one branch it is like renaming the folder and swapping its contents. Think of it like a magic room that changes depending on what branch its on. TFS on the other hand is located on a different path, so rather than a single magic room, its will create a new room for each branch.
+\\\\
+This difference in design will affect how the automation tool will interact with the VCS, as if it is developed using GIT, the system can watch multiple branches at the same time as it is all located in the same place. Whereas with TFS a new configuration will have to be made for each branch as they are separate from each other.
+\\\\
+With this in mind, if the workflow used is to create a new branch per version work on it until release then repeat, at the end of every release a new configuration will have to be made for the new branch. While this does not vary from the other workflow in terms of branching, new configuration will not have to be made as they will also be branched off with the project as seen in the next part. But, as development is performed on a single branch there is nothing to change until the project does.
+\\\\
+Before delving into the why the a new configuration is not needed, the master branch of the project as defied must always be in working condition ready to be delivered the users. If commit are therefore placed directly in master and they make the build or tests fail, then the entire concept of continuous deployment is failed as master is not in a  production ready state.
+\\\\
+% mention feature branch workflow.
+\\\\
+% mention about storing pipelin in text in the VCS.
 
 \subsection{Hardware architecture}
 
