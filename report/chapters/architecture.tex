@@ -26,6 +26,9 @@
 
 Now that the paper has covered all the concepts and ideas needed to build a full continuous deployment pipeline, this next section aims to look at the different form found in use and how they are put together.
 
+% data collection
+% researtch questions ect
+
 \subsection{Starting point}
 
 So far the paper has mentioned about a pipeline, the pipeline being taking the developers changes and getting then out to the customer in a working order. From a purely simplistic point of view the pipeline will look like the that seen in figure \ref{fig:pipeline-simple}.
@@ -114,10 +117,24 @@ With this in mind, if the workflow used is to create a new branch per version wo
 \\\\
 Before delving into the why the a new configuration is not needed, the master branch of the project as defied must always be in working condition ready to be delivered the users. If commit are therefore placed directly in master and they make the build or tests fail, then the entire concept of continuous deployment is failed as master is not in a  production ready state.
 \\\\
-% mention feature branch workflow.
+In order to combat this the preferred workflow is to use a feature branches, similar to that of a pull request system, development is performed on another branch then when ready can be merged into the master. Similar this allows tests and other action to be perform on the changes fore they are merged into master. This assures that the master will be kept in a working condition.
 \\\\
-% mention about storing pipelin in text in the VCS.
+This will also allow the merge to be reverted if there is an issue in the integration without losing the work performed as more commit can be made and tried to merge again.
+\\\\
+Now that there is a workflow in place and the pipeline is ready to be attached to the branches, where does the code and other parts needed in the pipeline go. The tools such as Jenkins, Teamcity and cruisecontrol all offer the ability to store scripts inside their systems through their user interface.
+\\\\
+For example Teamcity comes with pre-scripted runners that will allow a click and select experience to get the entire system set-up. While this is certainly a good selling point for non-experienced or quick one time set-ups over the long term this could be quite the opposite. In multiple ways, if the team decides they want to change from Teamcity to Jenkins now the entire system has to be built from the ground up again. Otherwise it might end up try to fit the way Teamcity handles things into Jenkins.
+\\\\
+Other issues with software version setting up new branches and so on, there are many more reasons as to why it is good in the short term on small project but for larger and more longer terms a better system is needed.
+\\\\
+Rather than storing the scripts inside of the tool, they should be placed inside of the VCS then depending on the set up, just have to call a single or multiple external scripts from the tool even if the scripts are a single line. In an ideal situation the scripts should be able to run on the target platforms for the project, such as using python or ruby rather than bash and batch file, to save writing them twice.
+\\\\
+This also has the befits of someone to walk up to a brand new machine get the repository and have the full system up and running within minutes as the VCS holds all the scripts needed.
 
 \subsection{Hardware architecture}
 
-\subsection{Architecture final words}
+Up to this point the paper has focused on the software side of thing looking at the pipeline, VCS and scripts. This next section will look at where this is hosted and how where each part can be split.  
+
+
+
+\subsection{Architecture final thoughts}
