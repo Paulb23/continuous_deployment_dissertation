@@ -132,6 +132,38 @@ This also has the befits of someone to walk up to a brand new machine get the re
 
 Up to this point the paper has focused on the software side of thing looking at the pipeline, VCS and scripts. This next section will look at where this is hosted and how where each part can be split.  
 \\\\
+First thing first the set up will depend on the size of your team and number of build being performed at once, for example a single server will be fine for small teams of five or where as when dealing with hundreds the server also need to scale to match.
+\\\\
+At the minimum a single server is required, this will hold the VCS, automation tool and staging / testing instance. Finally it will have to include the deployment manager. In general this is a lot of work to place onto a single box and to expect a quick turn feedback timing.
+\\\\
+Going back to section TODO:CITE on how automation tools work, the general principle is the central server and a lot of registered agents that can take jobs from the sever. This leads nicely into the following architecture seen in figure \ref{fig:bamboo}:
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=2.5]{images/bamboo.jpg}
+	\caption{Server setup \cite{bamboo}}
+	\label{fig:bamboo}
+\end{figure}
+%https://confluence.atlassian.com/bamboo/understanding-the-bamboo-ci-server-289277285.html
+
+The figure shows that rather than having a single sever it is split into three parts, the first containing the VCS, the second the CI / automation tool, and the third a number of machines to perform the build and tests as necessary.
+\\\\
+When the build severs are at max capacity new server can be spun up registered to the automation tool then it is good to go. This creates a easily scalable solution that can also be downsized if needed.
+\\\\
+The main issues with thsi setup is that some of the build server may become specialised. While there may be twenty build servers one may be used for build in linux this creates a bottleneck in the system, ideally all server should be able to accomplish all the task, looking towards Docker or similar programs again for the solution. In order to try and reduce dependency on the machines  and the programs, creating an environment where the system can run on anything quickly.
+\\\\
+For web application this is general not a problem as the build servers can be set up in way  that is appropriate and reflect the production environment, unless the application is designed to work across different servers such as Linux and windows. This however is not the same for other types of development such as embedded systems.
+\\\\
+TODO:CITE has designed a work around, interestingly is uses the same principles as Docker, install once and run everywhere, however rather then dealing with software they have recommended to build a software emulator to emulate the target hardware. This emulation can than be ran on any machine allowing the once specialise system to be generalised over multiple servers, removing the bottleneck. This designed can be seen in figure \ref{fig:intel}:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{images/intel.png}
+	\caption{Embedded systems \cite{intel}}
+	\label{fig:intel}
+\end{figure}
+% https://software.intel.com/en-us/blogs/2017/03/13/continuous-delivery-embedded-systems-and-simulation
+
+\subsection{Deployment}
 
 \subsection{Architecture final thoughts}
