@@ -166,4 +166,37 @@ TODO:CITE has designed a work around, interestingly is uses the same principles 
 
 \subsection{Deployment}
 
+Up till this point the paper has covered all the parts within the pipeline apart from deployment, and how to deploy a system from the end of the pipeline. This next part aims to cover this.
+
+\subsubsection{Databases}
+Sometimes no matter what application it is will have some form of database in the background, when the application updates, so the the database, changing the schema, tables and so on. In a continuous delivery pipeline this could happen multiple times in a day, whist trying to hold to the zero downtime expectations
+\\\\
+TODO:CITE has designed a application that achieves just that on a small scale, the paper also lists several alternatives that try and accomplish this. This is an on going area of research and should be expanded on to get the process to be as smooth as possible without disrupting the running of the application.  
+
+\subsubsection{Servers}
+
+Servers are unique as in general the company creating the product will also host or manage the server, this creates an easy situation where the entire pipeline is an internal process with minimal external needs, such as with the server company like Amazon web services (AWS).
+\\\\
+With a standard set-up the new version should be deployed behind the scenes then once done so the live site should now direct the the newer version rather tan the old. This can create an easy fall-back system if something goes completely wrong.
+\\\\
+The can be done by setting up another Docker container, or however the application is designed to be deployed, it is key however to have this automated. With regards to the database, idealy the database should be handled separately from the rest of the application to minimise errors. And when falling back to not have data loss.
+\\\\
+The deployment of servers are the type to be handled by the likes of Octopus, chef and puppet. That is not to say that they cannot be used for other type of deployment, more so that is where they are specialised.
+
+\subsubsection{Downloadable applications}
+
+As far as downloadable application or desktop applications, there are multiple options open, the main idea is to provide a area that can be check and downloaded via the software, by bundling the software up. On Linux type operating system (OS) this is normally checking the bundled software in to the package control repository, and updated via the system package manager such as apt-get or Pacman. 
+\\\\
+However, on a Windows like OS, even possible on Linux there are multiple option open to handle the updating of software TODO:CITE covers this, the final choice will come down to the type of software that is being deployed, a web browser can update and install in the background with the users knowledge fine, however more critical software must not, and must be handled with great care.
+
+\subsubsection{Mobile applications}
+
+Similarly, to Linux like application there is normally a gatekeeper in the way of pushing update directly to the user and instead must go through the "store". Therefore the deployment stage will consist of packaging the software up and submitting it to the store. 
+\\\\
+The ability to automate this process is not so much down to the software but rather the gatekeeper, as they may have manual review and delayed times between submissions, while internally continuous deployment can be used the gate keeper may make it impossible to do so all the way to the user.
+
 \subsection{Architecture final thoughts}
+
+Overall, there are some very clear structures and patterns to be found when creating a continuous deployment system. Starting with the pipeline, emerging two main styles of transporting depending on the type of application.
+\\\\
+To the workflow around the pipeline ensuring that there is a master breach that is always in development and the practises around them. 
