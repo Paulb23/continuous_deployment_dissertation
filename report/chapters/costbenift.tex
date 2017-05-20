@@ -44,10 +44,34 @@ Overall projects with continuous deployment or continuous integration end up wit
 
 While the benefits are great there are some greats costs that come with implementing continuous integration, delivery or other forms of these systems.
 \\\\
-
+Firstly, the initial upfront costs are expensive, get get the severs or to rent a system from a cloud service. This is both time and money spent getting the systems set up and running in a way that will suit the software package. 
+\\\\
+In the same vain if there are no tests tests the cost of written the tests in the first place is a slow and steady process that will not happen overnight, as they get integrated into the new systems. As the set up takes the current systems may have to be adapted the new systems for example change the VCS to provide better services. There are a lot of up font costs involve if the system is not simple or is not designed to allow this type of operation from the start, that is excludes the trouble of specialised hardware and having to emulate them. 
+\\\\
+Secondly, when the system is up and running there is a maintenance cost attached to the tests, if the software updates and changes a core part of the system so do the tests. There is also the matter of flaky tests that may or may not pass.
+\\\\
+The idea of workflow is an important on as there maybe need to change the way developers from commit every now and to commit more frequently for smaller changes. Theses type of costs will heavily depend on the current situation of the project for example a project that already practises test driven development therefore will have a lot of tests already written will find it easy to move over to continuous developer as all they have to do is hook up the tests whereas a project with no tests will have to start from scratch. 
+\\\\
+Excluding the technical costs and focusing on the personal, user will have to be trained to both understand how, why and what continuous deployment is and how it can benefit them, else the will have a tenancy to shy away from it. This will also require training on the new workflow or hiring addition people to come in a maintain the systems also known as Devops as mentioned towards the start of this paper.
+\\\\
+The main issue with this is while developers can run this themselves, continuous delivery can affect everyone involved in the process, this not only means getting developer training but managerial, QA and sales. 
 
 \subsection{Who}
 
 From the lists above it should be clear who can benefit from creating a system, the solo developer or the massive multilevel corporation.
+\\\\
+A a paper by TODO:CITE looked at the use of continuous integration in open source software finding that by using it is the system, have a high confidence in the software and release twice as often then those who do not. A similar study by TODO:CITE showed that there is an increase in productivity and no drop in code quality of otherwise.
+\\\\
+While there are plenty of cases where it can and should be use, it is easier to list off the places where continuous deployment may instead be worse. This comes in from three factors firstly the team size, secondly the project size and finally the project type.
+\\\\
+The team size plays a role as the system is a type of managerial tool, as a solo developer there is still reason to use continuous deployment to manage and keep tabs on the status of the project. The system however does come into its own when more people get involved as everyone can be kept up to date on the ongoings of the project. If for instance working in an open source project the continuous deployment may only be a solo developer but when other start contributing the project workflow will be easily able to scale up to and support the larger number of developer.
+\\\\
+Secondly the project size, a small 50 line script compared to a million plus of lines in a web application, come no where near close to comparing. There is almost going to be more set up and code in the automation tool for the first project then the second. Not only that but very inefficient use of time and effect as the tools are not designed to work at this small of a scale as found by TODO:cite.
+\\\\
+The third, starts of hand in hand with the project size, a small automation script is hardly worth the trouble, similarly, if that script however is used by everyone in the project for everyone in the team a small bug fix and such might type the balance in favour of moving towards continuous delivery to make sure that everyone is using the latest version. 
+\\\\
+With there ideas in mind one does not have to go from nothing to continuous delivery, there are various middle grounds that might be better used or on the route to implementing continuous delivery into the project. Theses include automating the build, test automation and continuous integration. 
 
 \subsection{Cost benefits final thoughts}
+
+Overall while continuous deployment and its variation bring many benefits the initial uphill climb and on going maintenance may not be for every project. Although it would always be a helping hand increase the base level of confidence in the project.
