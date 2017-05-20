@@ -27,6 +27,26 @@
 
 \subsection{Results}
 
-
+From the chapters in this paper continuous deployment and its variations involve a lot of different technology and process that deviate from some of the standard practises today.
+\\\\
+However, as explored in the the previous two chapters with experimentations and different ideas being put into place there are emerging patterns that seem to be gravitated towards.
+\\\\
+The first being the stages in the pipeline and how they connect to one and another, starting with the VCS in to the build and then tests. With minor variations for different project and modules using the a more modular approach. This system apply to all forms of projects from web applications to embedded systems.
+\\\\
+Then looking towards the workflow, there seems to be a set idea on using the feature based workflow with a single main branch where all development is carried out. This is achieved via pull request of branch based processes.
+\\\\
+Moving onwards to the hardware and server set-up. The general principles allow the servers to accomplish every task with easy to scale up and down using the three tired architecture.
+\\\\
+The final technical section the paper covered what the deployment strategies will depend on what is being deployed and what it is being deployed two, and the general procedures around that. The general idea to make it work everywhere as quickly as possible with no painful experiences for the end user.
+\\\\
+Lastly, the paper took a quick look at the cost benefits and who should bother with such a system in the first place, seeing that there are three main factor to take into account when deciding team size, project size and project type. For example a solo developer on a small script can survive without whereas a team of five hundred on  a million plus lines of code probably cannot.
 
 \subsection{Future work}
+
+Judging from the current status of the technologies seen throughout this paper, this area seems to be going along the right tracks, making and automating the process as much as possible with quic feedback for all, in turn making the experience easy for user and developer alike.
+\\\\
+There is however one area that is lacking, and could be explored further which is embedded and other low level systems, as destroying hardware every build to tests can get expensive fast. Similarly creating a simulator for the technology is a whole different project by itself. 
+\\\\
+Web, desktop and mobile applications are all on the right course with easy to reproduce environments getting easier with Docker and other technologies however embedded and other lower level systems start to feel a little on the side lines, therefore this need more looking into.
+\\\
+Such as how to reproduce the environments without attaching such a huge cost to them.
