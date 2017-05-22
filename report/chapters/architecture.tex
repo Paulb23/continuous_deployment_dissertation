@@ -44,6 +44,7 @@ The testing part of the pipeline refers to unit tests and the other forms mentio
 When talking about the architecture such a system there are two side, firstly the software pipeline as seen above. How each of the steps flow into each over and what is needed to pass between each of the steps. The second is the hardware layout,  such as are the unit tests ran of the same server that it is built, or maybe the entire pipeline in confined to a single server.
 
 \subsection{Software architecture}
+\label{sec:testing}
 
 Figure \ref{fig:pipeline-simple} showed a basic pipeline for a continuous delivery pipeline, however there is not enough details to build a system from this. Below figure \ref{fig:bsipipeline} shows the system developed from the project that sparked this paper:
 
@@ -82,6 +83,7 @@ One thing not show so far but some teams find invaluable is to run a static anal
 This basic pattern and flow of the pipeline does seems to be a common theme throughout all over implementations.  With the single monolith structure taking it from the start to end and the second combining multiple components into a single software package. 
 
 \subsection{VCS workflow}
+\label{sec:vcs}
 
 As seen the pipeline is generally triggered via a commit into the VCS this makes the workflow with the branch structure and VCS a central component into how the rest of the systems are put together.
 \\\\
@@ -171,6 +173,7 @@ Cloudbees, BitbucketPipelines and others offers a cloud solution to take the rep
 While the cloud solutions remove the need for handling the severs and sever set up themselves, the architecture discussed in the section will still apply as there will still be a need for a VCS server and automation tool server, it is just a matter of not dealing with them directly, but rather though a third party.
 
 \subsection{Deployment}
+\label{sec:deployment}
 
 Up till this point the paper has covered all the parts within the pipeline apart from deployment, and how to deploy a system from the end of the pipeline. This next part aims to cover this.
 
