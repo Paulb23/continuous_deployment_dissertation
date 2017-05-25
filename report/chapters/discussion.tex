@@ -27,15 +27,15 @@
 
 \subsection{Results}
 
+This project started out to find the architecture in and around continuous deployment these where then redefined into three different questions as follows:
+
 \begin{itemize}
   \item Is there a clear or ideal architecture that when creating a new or adapting another system should use or head towards.\\
     \item Where are the common traps and pitfalls found when creating a such a system, interlinked  with goal one what can be changed to avoid them.\\
-  \item Does the benefits or creating such a system, in both hours and effort pay of in the end. \\
+  \item Does the benefits or creating such a system, in both hours and effort pay of in the end.
 \end{itemize}
 
-From the chapters in this paper continuous deployment and its variations involve a lot of different technology and process that deviate from some of the standard practises today.
-\\\\
-However, as explored in the the previous two chapters with experimentations and different ideas being put into place there are emerging patterns that seem to be gravitated towards.
+The first two questions are covered through all the chapters in this paper, both continuous deployment and its variations, seeing that they involve a lot of different technologies and process that deviate from some of the standard practises today. However, as explored in the previous two chapters looking at different ideas and designs being put into place there some are emerging patterns that seem to be gravitated towards.
 \\\\
 The first being the stages in the pipeline and how they connect to one and another, starting with the VCS in to the build and then tests. With minor variations for different project and modules using the a more modular approach. This system apply to all forms of projects from web applications to embedded systems.
 \\\\
@@ -45,14 +45,18 @@ Moving onwards to the hardware and server set-up. The general principles allow t
 \\\\
 The final technical section the paper covered what the deployment strategies will depend on what is being deployed and what it is being deployed two, and the general procedures around that. The general idea to make it work everywhere as quickly as possible with no painful experiences for the end user.
 \\\\
-Lastly, the paper took a quick look at the cost benefits and who should bother with such a system in the first place, seeing that there are three main factor to take into account when deciding team size, project size and project type. For example a solo developer on a small script can survive without whereas a team of five hundred on  a million plus lines of code probably cannot.
+As for the second question, while they are not directly mentioned, they can be assumed from the context in which the user is trying to build a continuous deployment system. Such as trying to build a multi tier server set-up for a small 50 line script. 
+\\\\
+Alternative a system with a lot of flaky tests, or not enough tests of different types may struggle during the integration stages of the project. Most of these can be avoided by sticking to the core principles outlined in the paper. The cost of such a system is in the education and training of users on the new workflow and system to make sure that is not use effectively.
+\\\\
+For the last question, the paper took a quick look at the cost benefits and who should bother with such a system in the first place. Rather than looking at the places where it should be used identifying three main factors to take into account when deciding team size, project size and project type. For example a solo developer on a small script can survive without whereas a team of five hundred on  a million plus lines of code probably cannot.
 
 \subsection{Future work}
 
-Judging from the current status of the technologies seen throughout this paper, this area seems to be going along the right tracks, making and automating the process as much as possible with quic feedback for all, in turn making the experience easy for user and developer alike.
+Judging from the current status of the technologies seen throughout this paper, this area seems to be going along the right tracks, making and automating the process as much as possible with quick feedback for all, in turn making the experience easy for users and developers alike.
 \\\\
-There is however one area that is lacking, and could be explored further which is embedded and other low level systems, as destroying hardware every build to tests can get expensive fast. Similarly creating a simulator for the technology is a whole different project by itself. 
+There is however one area that is lacking, and could be explored further which is embedded and other low level systems, as destroying hardware every build to test can get expensive fast. Similarly creating a simulator for the technology is a whole different project by itself. 
 \\\\
-Web, desktop and mobile applications are all on the right course with easy to reproduce environments getting easier with Docker and other technologies however embedded and other lower level systems start to feel a little on the side lines, therefore this need more looking into.
-\\\
-Such as how to reproduce the environments without attaching such a huge cost to them.
+Web, desktop and mobile applications are all on the right course with easy to reproduce environments getting easier with Docker and other technologies however embedded and other lower level systems are starting to feel a little on the side lines, therefore this needs more looking into. 
+\\\\
+Such as how to reproduce the environments without attaching such a huge cost to them. Better interrogation of the tools in to the current systems. In general trying to bring the rich ecosystem surrounding the other development areas in this field.
