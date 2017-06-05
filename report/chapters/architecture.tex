@@ -57,7 +57,7 @@ Figure \ref{fig:pipeline-simple} showed a basic pipeline for a continuous delive
 
 The figure shows two things, firstly it reveals the local development cycle. The cycle being that the developer will check the basics before checking in the code to the VCS in this case a TFS server. Not noted on the diagram the developer will also have access to a local running copy of the program allowing them to run other forms of tests if needed. 
 \\\\
-The second part, it expands on the build and test block previously seen, firstly, the build, then the unit tests followed by system tests. System tests not mention before are a form of integration tests. This then leads onto an interesting part where the system is deployed onto a staging instance, this allows the API and regression tests to be ran, as they require the system to be up and running. This is then deployed to testing  for manual tests, where it can then be pushed to production. In continuous deployment theses steps would be automated.
+The second part, it expands on the build and test block previously seen, firstly, the build, then the unit tests followed by system tests. System tests not mention before are a form of integration tests. This then leads onto an interesting part where the system is deployed onto a staging instance, this allows the API and regression tests to be ran, as they require the system to be up and running. This is then deployed to testing  for manual tests, where it can then be pushed to production. In continuous deployment these steps would be automated.
 \\\\
 The interesting part here is how four different deployments are needed, one for the developer, one for staging, one for testing and one for production. This is where Docker and other such tools fit into the picture.
 \\\\
