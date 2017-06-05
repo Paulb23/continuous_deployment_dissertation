@@ -32,20 +32,20 @@ This project started out to find the architecture in and around continuous deplo
 \begin{itemize}
   \item Is there a clear or ideal architecture that when creating a new or adapting another system should use or head towards.\\
     \item Where are the common traps and pitfalls found when creating a such a system, interlinked  with goal one what can be changed to avoid them.\\
-  \item Does the benefits or creating such a system, in both hours and effort pay of in the end.
+  \item Does the benefits or creating such a system, in both hours and effort pay off in the end.
 \end{itemize}
 
 The first two questions are covered through all the chapters in this paper, both continuous deployment and its variations, seeing that they involve a lot of different technologies and process that deviate from some of the standard practises today. However, as explored in the previous two chapters looking at different ideas and designs being put into place there some are emerging patterns that seem to be gravitated towards.
 \\\\
-The first being the stages in the pipeline and how they connect to one and another, starting with the VCS in to the build and then tests. With minor variations for different project and modules using the a more modular approach. This system applies to all forms of projects from web applications to embedded systems.
+Starting with the stages in the pipeline and how they connect to one and another, starting with the VCS in to the build and then tests. With minor variations for different project and modules using a more modular approach. This system applies to all forms of projects from web applications to embedded systems.
 \\\\
 Then looking towards the workflow, there seems to be a set idea on using the feature based workflow with a single main branch where all development is carried out. This is achieved via pull request or branch based processes.
 \\\\
-Moving onwards to the hardware and server set-up. The general principles allow the servers to accomplish every task with easy to scale up and down using the three tired architecture.
+Moving onwards, the hardware and server set-up. The general principles allow the servers to accomplish every task with easy to scale up and down using the three tired architecture.
 \\\\
-The final technical section the paper covered what the deployment strategies will depend on what is being deployed and what it is being deployed to, including the general procedures around that. The general idea to make it work everywhere as quickly as possible with no painful experiences for the end user.
+The final technical section the paper covered what the deployment strategies will depend on what is being deployed and what it is being deployed to, including the general procedures around that. The general idea is to make it work everywhere as quickly as possible with no painful experiences for the end user.
 \\\\
-As for the second question, while they are not directly mentioned, they can be assumed from the context in which the user is trying to build a continuous deployment system. Such as trying to build a multi tier server set-up for a small 50 line script. 
+As for the second question, while they are not directly mentioned, they can be assumed from the context in which the user is trying to build a continuous deployment system. Such as trying to build a multi-tier server set-up for a small 50 line script. 
 \\\\
 Alternatively a system with a lot of flaky tests, or not enough tests of different types may struggle during the integration stages of the project. Most of these can be avoided by sticking to the core principles outlined in the paper. The cost of such a system is in the education and training of users on the new workflow and system to make sure that is used effectively.
 \\\\

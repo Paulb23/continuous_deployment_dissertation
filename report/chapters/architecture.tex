@@ -28,7 +28,7 @@ Now that the paper has covered all the concepts and ideas needed to build a full
 
 \subsection{Starting point}
 
-So far the paper has mentioned a pipeline, the pipeline will take the developers changes and pass them out to the user in working order. From a purely simplistic point of view the pipeline will look like the that seen in figure \ref{fig:pipeline-simple}.
+So far the paper has mentioned a pipeline, the pipeline will take the developers changes and pass them out to the user in working order. From a purely simplistic point of view the pipeline will look like that seen in figure \ref{fig:pipeline-simple}.
 
 \begin{figure}[H]
 	\centering
@@ -41,7 +41,7 @@ The developer will check in the code to the VCS which in turn will trigger the a
 \\\\
 The testing part of the pipeline refers to unit tests and the other forms mentioned in the earlier chapters. Even if the system does successfully pass the feedback will still be sent, this will help guard against false positives.
 \\\\
-When talking about the architecture of such a system there are two side, firstly the software pipeline as seen above. How each of the steps flow into each other and what is needed to pass between each of the steps. The second is the hardware layout,  such as are the unit tests ran on the same server that it is built on, or maybe the entire pipeline in confined to a single server.
+When talking about the architecture of such a system there are two sides, firstly the software pipeline as seen above. How each of the steps flow into each other and what is needed to pass between each of the steps. The second is the hardware layout,  such as are the unit tests ran on the same server that it is built on, or maybe the entire pipeline in confined to a single server.
 
 \subsection{Software architecture}
 \label{sec:testing}
@@ -80,7 +80,7 @@ This kind of pattern goes along with the development environments based on break
 \\\\
 One thing not shown so far but some teams find invaluable is to run a static analysis on the code base to pre-emptively spot erroneous areas in the project before they happen. This can then be sent back with the rest of the report to the developers and other interested parties.
 \\\\
-This basic pattern and flow of the pipeline does seems to be a common theme throughout all implementations.  With the single monolith structure taking it from the start to end and the second combining multiple components into a single software package. 
+This basic pattern and flow of the pipeline does seem to be a common theme throughout all implementations.  With the single monolith structure taking it from the start to end and the second combining multiple components into a single software package. 
 
 \subsection{VCS workflow}
 \label{sec:vcs}
@@ -149,13 +149,13 @@ Going back to the start of this paper on how automation tools work, the general 
 
 The figure shows that rather than having a single sever it is split into three parts, the first containing the VCS, the second the CI / automation tool, and the third a number of machines to perform the builds and tests as necessary.
 \\\\
-When the build severs are at max capacity new servers can be spun up registered to the automation tool ready to go. This creates a easily scalable solution that can also be downsized if needed.
+When the build severs are at max capacity new servers can be spun up registered to the automation tool ready to go. This creates an easily scalable solution that can also be downsized if needed.
 \\\\
-The main issues with this set-up is that some of the build servers may become specialised. While there may be twenty build servers one may be used for build in Linux this creates a bottleneck in the system, ideally all servers should be able to accomplish all the tasks, looking towards Docker or similar programs again for the solution. In order to try and reduce dependency on the machines  and the programs, creating an environment where the system can run on anything quickly.
+The main issues with this set-up are that some of the build servers may become specialised. While there may be twenty build servers one may be used for build in Linux this creates a bottleneck in the system, ideally all servers should be able to accomplish all the tasks, looking towards Docker or similar programs again for the solution. In order to try and reduce dependency on the machines  and the programs, creating an environment where the system can run on anything quickly.
 \\\\
 For web application this is generally not a problem as the build servers can be set up in way  that is appropriate and reflect the production environment, unless the application is designed to work across different servers such as Linux and Windows. This however is not the same for other types of development such as embedded systems.
 \\\\
-\cite{intel} has designed a work around, interestingly it uses the same principles as Docker, install once and run everywhere, however rather then dealing with software they have recommended to build a software emulator to emulate the target hardware. This emulation can then be ran on any machine allowing the once specialise system to be generalised over multiple servers, removing the bottleneck. This designed can be seen in figure \ref{fig:intel}:
+\cite{intel} has designed a work around, interestingly it uses the same principles as Docker, install once and run everywhere, however rather than dealing with software they have recommended building a software emulator to emulate the target hardware. This emulation can then be ran on any machine allowing the once specialise system to be generalised over multiple servers, removing the bottleneck. This designed can be seen in figure \ref{fig:intel}:
 
 \begin{figure}[H]
 	\centering
@@ -166,9 +166,9 @@ For web application this is generally not a problem as the build servers can be 
 
 While this design works by abstracting the hardware platform into software, there is a large issue with the amount of effort required in order to create this emulation. This may be proprietary hardware or otherwise increasing the difficulty of such a task. There is also the issue with performance as it is now software rather then running directly onto the hardware. 
 \\\\
-In this part most of the solutions are focused on self-hosted and run solutions, however there is also the option to rent or buy the whole package rather then run them internally. For example, GihHub, BitBucket and GitLab provide a was to host GIT repositories, at a price, they even offer intergeneration with CI services such as Travis. 
+In this part most of the solutions are focused on self-hosted and run solutions, however there is also the option to rent or buy the whole package rather than run them internally. For example, GihHub, BitBucket and GitLab provide a way to host GIT repositories, at a price, they even offer intergeneration with CI services such as Travis. 
 \\\\
-Cloudbees, BitbucketPipelines and others offer a cloud solution to take the repository and perform the operations on then removing the need to worry about servers and interaction between them. Ultimately the choice of system will come down to the project and budget at hand. With sensitive data, a self-hosted solution will work out better whereas a open source project will fair well with the cloud solutions.
+Cloudbees, BitbucketPipelines and others offer a cloud solution to take the repository and perform the operations on then removing the need to worry about servers and interaction between them. Ultimately the choice of system will come down to the project and budget at hand. With sensitive data, a self-hosted solution will work out better whereas an open source project will fare well with the cloud solutions.
 \\\\
 While the cloud solutions remove the need for handling the severs and sever set up themselves, the architecture discussed in this section will still apply as there will still be a need for a VCS server and automation tool server, it is just a matter of not dealing with them directly, but rather through a third party.
 
@@ -180,21 +180,21 @@ Up until this point the paper has covered all the parts within the pipeline apar
 \subsubsection{Databases}
 Sometimes no matter what application it will have some form of database in the background, when the application updates, so does the database, changing the schema, tables or data types. In a continuous delivery pipeline this could happen multiple times in a day, whist trying to hold to the zero downtime expectations
 \\\\
-\cite{updatedatabse} has designed an application that achieves just that on a small scale, the paper also lists several alternatives that try and accomplish this. This is an on going area of research and should be expanded on to get the process to be as smooth as possible without disrupting the running of the application.  
+\cite{updatedatabse} has designed an application that achieves just that on a small scale, the paper also lists several alternatives that try and accomplish this. This is an ongoing area of research and should be expanded on to get the process to be as smooth as possible without disrupting the running of the application.  
 
 \subsubsection{Servers}
 
 Servers are unique as in general the company creating the product will also host or manage the server, this creates an easy situation where the entire pipeline is an internal process with minimal external needs, such as with the server company like Amazon web services (AWS).
 \\\\
-With a standard set-up the new version should be deployed behind the scenes then once done so the live site should now direct the the newer version rather than the old. This can create an easy fallback system if something goes completely wrong.
+With a standard set-up the new version should be deployed behind the scenes then once done so the live site should now redirect to the newer version rather than the old. This can create an easy fallback system if something goes completely wrong.
 \\\\
-The can be done by setting up another Docker container, or however the application is designed to be deployed, it is key however to have this automated. With regards to the database, ideally the database should be handled separately from the rest of the application to minimise errors. And when falling back to not have data loss.
+This can be done by setting up another Docker container, or however the application is designed to be deployed, it is key however to have this automated. With regards to the database, ideally the database should be handled separately from the rest of the application to minimise errors and when falling back to avoid data loss.
 \\\\
 The deployment of servers are the type to be handled by the likes of Octopus, Chef and Puppet. That is not to say that they cannot be used for other type of deployment, more so that is where they are specialised.
 
 \subsubsection{Downloadable applications}
 
-As far as downloadable application or desktop applications, there are multiple options open, the main idea is to provide a area that can be checked and downloaded via the software, by bundling the software up. On Linux type operating systems (OS) this is normally checking in the bundled software in to the package control repository, and updated via the system package manager such as apt-get or Pacman. 
+As far as downloadable application or desktop applications, there are multiple options open, the main idea is to provide an area that can be checked and downloaded via the software, by bundling the software up. On Linux type operating systems (OS) this is normally checking in the bundled software in to the package control repository, and updated via the system package manager such as apt-get or Pacman. 
 \\\\
 However, on a Windows like OS, even possible on Linux there are multiple options open to handle the updating of software \cite{deploy} covers this, the final choice will come down to the type of software that is being deployed, a web browser can update and install in the background without the users knowledge fine, however more critical software must not, and must be handled with great care.
 
